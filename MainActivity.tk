@@ -1,0 +1,47 @@
+package com.ruloRomerr.despensa
+
+import android.content.Intent
+import android.icu.lang.UCharacter.GraphemeClusterBreak.L
+import android.support.v7.app.AppCompatActivity
+import android.os.Bundle
+import android.os.StrictMode
+import android.support.design.widget.TabLayout
+import android.support.v4.view.ViewPager
+import android.support.v7.widget.Toolbar
+import android.util.Log
+import android.view.View
+import android.view.View.OnClickListener
+import android.widget.TextView
+import android.widget.Toast
+import com.ruloRomerr.despensa.Interfaces.CompletadoListener
+import kotlinx.android.synthetic.*
+import kotlinx.android.synthetic.main.activity_main.*
+import java.io.IOException
+import java.io.InputStream
+import java.net.HttpURLConnection
+import java.net.URL
+
+class MainActivity : AppCompatActivity(),CompletadoListener {
+
+    val TAG:String = "BKFO"
+   
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+
+        if(Utils.internet.hayRed(applicationContext)){
+            Toast.makeText(applicationContext,"Hay internet",Toast.LENGTH_LONG).show()
+
+            DescargaUrl(this).execute("http://192.168.0.20/servicio/index.php")
+            //Log.e(TAG,respuesta)
+        }
+        else{
+            Toast.makeText(applicationContext,"Asegurate de tener internet",Toast.LENGTH_LONG).show()
+        }
+    }
+
+    override fun descargaCompleta(resultado: String) {
+        Log.e(TAG,"Descarga completa " + resultado)
+    }
+}
