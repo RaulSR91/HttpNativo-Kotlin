@@ -1,4 +1,3 @@
-package com.ruloRomerr.despensa
 
 import android.content.Intent
 import android.icu.lang.UCharacter.GraphemeClusterBreak.L
