@@ -1,4 +1,3 @@
-
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.TabLayout
@@ -15,28 +14,20 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), OnClickListener,CompletadoListener {
 
-
     val TAG:String = "BKFO"
-
+   
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-
-
         if(Utils.internet.hayRed(applicationContext)){
             Toast.makeText(applicationContext,"Hay internet",Toast.LENGTH_LONG).show()
-
-
             DescargaUrl(this).execute("http://192.168.0.20/servicio/index.php")
-            //Log.e(TAG,respuesta)
         }
         else{
             Toast.makeText(applicationContext,"Asegurate de tener internet",Toast.LENGTH_LONG).show()
         }
     }
-
 
     override fun descargaCompleta(resultado: String) {
         Log.e(TAG,"Descarga completa " + resultado)
