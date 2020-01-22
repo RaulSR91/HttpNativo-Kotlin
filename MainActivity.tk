@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity(), OnClickListener,CompletadoListener {
-
+//Pruebas de cambios par aun pull request
     val TAG:String = "BKFO"
    
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity(), OnClickListener,CompletadoListener {
         }
     }
 
+//Comentario de descarga de url
     override fun descargaCompleta(resultado: String) {
         Log.e(TAG,"Descarga completa " + resultado)
     }
